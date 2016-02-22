@@ -1,2 +1,2 @@
 # Rinon
-Electon Browser 
+Electon Browser using [jolteon](https://github.com/vulpino/jolteon)
