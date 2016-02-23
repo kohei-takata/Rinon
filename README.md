@@ -1,10 +1,12 @@
 # Rinon
-Electon Browser using [jolteon](https://github.com/vulpino/jolteon)
+Electon Browser
 
 # Usage
-- `$ git clone git@github.com:kohei-takata/Rinon.git`
-- `$ npm install`
-- Put `/Users/<User Name>/Library/Application Support/Rinon` `menu.json`
+1. `$ git clone git@github.com:kohei-takata/Rinon.git`
+2. `$ npm install`
+3. Put `/Users/<User Name>/Library/Application Support/Rinon` `menu.json`
+4. `$ cd Rinon`
+5. `$ electron .`
 
 `menu.json` looks like this.
 
@@ -18,6 +20,3 @@ Electon Browser using [jolteon](https://github.com/vulpino/jolteon)
 }
 
 ```
-
-- `$ cd Rinon`
-- `$ electron .`
