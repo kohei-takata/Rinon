@@ -14,6 +14,7 @@ Electon Browser
 {
   "main" : "https://github.com/",
   "sub" : [
+    "https://github.com/",
     "https://google.com/",
     "https://yahoo.com/"
   ]
