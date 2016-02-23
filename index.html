@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Rinon</title>
+        <link rel="stylesheet" href="./style.css" type="text/css">
+    </head>
+    <body>
+        <h1>Hello, Rinon!</h1>
+        <div id="menu">
+            <div>Menu</div>
+            <span id="menuList"></span>
+            <script>
+                const storage = require('electron-json-storage');
+
+                storage.get('menu', function (error, data) {
+                    if (error) throw error;
+                    if (data) {
+                        const webview = document.getElementById("webview");
+                        webview.setAttribute("src", data.main);
+                        const menuList = document.getElementById("menuList");
+                        for(var i = 0; i < data.sub.length;i++) {
+                            console.log(data.sub[i]);
+                            var button = document.createElement("button");
+                            button.setAttribute("onclick", 'webview.setAttribute("src", this.innerHTML);');
+                            button.innerHTML = data.sub[i];
+                            var p = document.createElement("p");
+                            p.appendChild(button);
+                            menuList.appendChild(p);
+                        }
+                    }
+                });
+            </script>
+        </div>
+        <div id="content">
+            <webview id="webview">Loading...</webview>
+            <script>
+                onload = function() {
+                    const webview = document.getElementById("webview");
+                    const indicator = document.querySelector(".indicator");
+
+                    let loadstart;
+                    let loadstop;
+                    if(indicator) {
+                        loadstart = function() {
+                            indicator.innerText = "Loading...";
+                        };
+                        loadstop = function() {
+                            indicator.innerText = "";
+                        };
+                    }
+                    webview.addEventListener("did-start-loading", loadstart);
+                    webview.addEventListener("did-stop-loading", loadstop);
+                }
+            </script>
+        </div>
+    </body>
+</html>

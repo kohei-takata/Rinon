@@ -1,0 +1,21 @@
+html {
+    height: 100%;
+    width: 100%
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#menu {
+    float: left;
+    width: 20%;
+    height: 100%;
+}
+
+#content {
+    float: right;
+    width: 80%;
+    height: 100%;
+}
