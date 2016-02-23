@@ -3,9 +3,9 @@ Electon Browser
 
 # Usage
 1. `$ git clone git@github.com:kohei-takata/Rinon.git`
-2. `$ npm install`
-3. Put `/Users/<User Name>/Library/Application Support/Rinon` `menu.json`
-4. `$ cd Rinon`
+2. `$ cd Rinon`
+3. `$ npm install`
+4. Put`menu.json` to `/Users/<User Name>/Library/Application Support/Rinon`
 5. `$ electron .`
 
 `menu.json` looks like this.
