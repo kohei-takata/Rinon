@@ -17,13 +17,12 @@
                     if (error) throw error;
                     if (data) {
                         const webview = document.getElementById("webview");
-                        webview.setAttribute("src", data.main);
+                        webview.setAttribute("src", data.main.url);
                         const menuList = document.getElementById("menuList");
                         for(var i = 0; i < data.sub.length;i++) {
-                            console.log(data.sub[i]);
                             var button = document.createElement("button");
-                            button.setAttribute("onclick", 'webview.setAttribute("src", this.innerHTML);');
-                            button.innerHTML = data.sub[i];
+                            button.setAttribute("onclick", 'webview.setAttribute("src", "' + data.sub[i].url + '");');
+                            button.innerHTML = data.sub[i].name;
                             var p = document.createElement("p");
                             p.appendChild(button);
                             menuList.appendChild(p);
