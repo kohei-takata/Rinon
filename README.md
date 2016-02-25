@@ -12,12 +12,14 @@ Electon Browser
 
 ```json
 {
-  "main" : "https://github.com/",
+  "main" :{"url": "https://github.com/"},
   "sub" : [
-    "https://github.com/",
-    "https://google.com/",
-    "https://yahoo.com/"
+  {"name": "github", 
+   "url": "https://github.com/"},
+  {"name": "google", 
+   "url": "https://google.com/"},
+  {"name": "yahoo",
+   "url": "https://yahoo.com/"}
   ]
 }
-
 ```
