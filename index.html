@@ -18,6 +18,9 @@
                     if (data) {
                         const webview = document.getElementById("webview");
                         webview.setAttribute("src", data.main.url);
+                        webview.addEventListener("dom-ready", function() {
+                            document.getElementById("url").value = webview.getURL();
+                        });
                         const menuList = document.getElementById("menuList");
                         for(var i = 0; i < data.sub.length;i++) {
                             var button = document.createElement("button");
@@ -32,10 +35,32 @@
             </script>
         </div>
         <div id="content">
+            <span id="urlBar">
+                <button onclick="back();">戻る</button>
+                <button onclick="forward();">進む</button>
+                <button onclick="reload();">更新</button>
+                <button onclick="openDevTool();">DevTool</button>
+            </span>
+            <span>
+                <form onsubmit="changeUrl();return false;">
+                    <input type="url" id="url" value=""/>
+                </form>
+            </span>
             <webview id="webview">Loading...</webview>
             <script>
+                "use strict";
+                const webview = document.getElementById("webview");
+
+                function back() {
+                    webview.goBack();
+                }
+                function forward() {
+                    webview.goForward();
+                }
+                function reload() {
+                    webview.reload();
+                }
                 onload = function() {
-                    const webview = document.getElementById("webview");
                     const indicator = document.querySelector(".indicator");
 
                     let loadstart;
@@ -50,6 +75,14 @@
                     }
                     webview.addEventListener("did-start-loading", loadstart);
                     webview.addEventListener("did-stop-loading", loadstop);
+                };
+
+                function openDevTool() {
+                    webview.openDevTools();
+                }
+
+                function changeUrl() {
+                    webview.setAttribute("src", document.getElementById("url").value);
                 }
             </script>
         </div>
