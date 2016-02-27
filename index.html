@@ -4,35 +4,13 @@
         <meta charset="UTF-8">
         <title>Rinon</title>
         <link rel="stylesheet" href="./style.css" type="text/css">
+        <script type="text/javascript" src="./index.js"></script>
     </head>
     <body>
         <h1>Hello, Rinon!</h1>
         <div id="menu">
             <div>Menu</div>
             <span id="menuList"></span>
-            <script>
-                const storage = require('electron-json-storage');
-
-                storage.get('menu', function (error, data) {
-                    if (error) throw error;
-                    if (data) {
-                        const webview = document.getElementById("webview");
-                        webview.setAttribute("src", data.main.url);
-                        webview.addEventListener("dom-ready", function() {
-                            document.getElementById("url").value = webview.getURL();
-                        });
-                        const menuList = document.getElementById("menuList");
-                        for(var i = 0; i < data.sub.length;i++) {
-                            var button = document.createElement("button");
-                            button.setAttribute("onclick", 'webview.setAttribute("src", "' + data.sub[i].url + '");');
-                            button.innerHTML = data.sub[i].name;
-                            var p = document.createElement("p");
-                            p.appendChild(button);
-                            menuList.appendChild(p);
-                        }
-                    }
-                });
-            </script>
         </div>
         <div id="content">
             <span id="urlBar">
@@ -47,44 +25,6 @@
                 </form>
             </span>
             <webview id="webview">Loading...</webview>
-            <script>
-                "use strict";
-                const webview = document.getElementById("webview");
-
-                function back() {
-                    webview.goBack();
-                }
-                function forward() {
-                    webview.goForward();
-                }
-                function reload() {
-                    webview.reload();
-                }
-                onload = function() {
-                    const indicator = document.querySelector(".indicator");
-
-                    let loadstart;
-                    let loadstop;
-                    if(indicator) {
-                        loadstart = function() {
-                            indicator.innerText = "Loading...";
-                        };
-                        loadstop = function() {
-                            indicator.innerText = "";
-                        };
-                    }
-                    webview.addEventListener("did-start-loading", loadstart);
-                    webview.addEventListener("did-stop-loading", loadstop);
-                };
-
-                function openDevTool() {
-                    webview.openDevTools();
-                }
-
-                function changeUrl() {
-                    webview.setAttribute("src", document.getElementById("url").value);
-                }
-            </script>
         </div>
     </body>
 </html>
