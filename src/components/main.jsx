@@ -12,15 +12,32 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        storage.get('menu', function (error, data) {
+        storage.get('menu', (error, data) => {
             if (error) throw error;
             if (data) {
                 this.setState({
                     main: data.main,
                     sub: data.sub
+                }, () => {
+                    this.state.sub && this.state.sub.forEach((sub) => {
+                        let webview = document.getElementById(`${sub.name}-webview`);
+                        webview.addEventListener("dom-ready", function() {
+                            let _sub = this.state.sub;
+                            _sub = _sub.map((obj) => {
+                                if(obj.name === sub.name) {
+                                    obj.url =  webview.getURL();
+                                }
+                                return obj;
+                            });
+                            this.setState({
+                                sub: _sub
+                            });
+                            document.getElementById("url").value = webview.getURL();
+                        }.bind(this));
+                    });
                 });
             }
-        }.bind(this));
+        });
     }
 
     handleClick(e) {
@@ -45,6 +62,13 @@ class Main extends React.Component {
 
     openDevTool(name) {
         document.getElementById(`${name}-webview`).openDevTools();
+    }
+
+    changeUrl() {
+        console.log(this);
+        //this.setState({
+        //    url: ''
+        //});
     }
 
     render() {
@@ -79,8 +103,8 @@ class Main extends React.Component {
                             <button onClick={this.openDevTool.bind(this, this.state.main.name)}>DevTool</button>
                         </div>
                         <div>
-                            <form onsubmit="changeUrl();return false;">
-                                <input type="url" id="url" value=""/>
+                            <form onSubmit={this.changeUrl.bind(this)}>
+                                <input type="url" id="url" value={this.state.main.url}/>
                             </form>
                         </div>
                         <div>
