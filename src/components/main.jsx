@@ -7,7 +7,8 @@ class Main extends React.Component {
         super(props);
         this.state = {
             main: {},
-            sub: []
+            sub: [],
+            url: ''
         };
     }
 
@@ -17,7 +18,8 @@ class Main extends React.Component {
             if (data) {
                 this.setState({
                     main: data.main,
-                    sub: data.sub
+                    sub: data.sub,
+                    url: data.main.url
                 }, () => {
                     this.state.sub && this.state.sub.forEach((sub) => {
                         let webview = document.getElementById(`${sub.name}-webview`);
@@ -30,9 +32,9 @@ class Main extends React.Component {
                                 return obj;
                             });
                             this.setState({
-                                sub: _sub
+                                sub: _sub,
+                                url: webview.getURL()
                             });
-                            document.getElementById("url").value = webview.getURL();
                         }.bind(this));
                     });
                 });
@@ -44,7 +46,8 @@ class Main extends React.Component {
         this.state.sub.filter((menu) => {
             return `${menu.name}-menu` ===  e.target.id
         }).map((data) => this.setState({
-            main: data
+            main: data,
+            url: data.url
         }));
     }
 
@@ -64,11 +67,24 @@ class Main extends React.Component {
         document.getElementById(`${name}-webview`).openDevTools();
     }
 
-    changeUrl() {
-        console.log(this);
-        //this.setState({
-        //    url: ''
-        //});
+    changeUrl(e) {
+        let _sub = this.state.sub;
+        _sub = _sub.map((obj) => {
+            if(obj.name === this.state.main.name) {
+                obj.url =  document.getElementById("url").value;
+            }
+            return obj;
+        });
+        this.setState({
+            sub: _sub
+        });
+        e.preventDefault();
+    }
+
+    handleChangeUrl(e) {
+        this.setState({
+            url: e.target.value
+        })
     }
 
     render() {
@@ -104,7 +120,7 @@ class Main extends React.Component {
                         </div>
                         <div>
                             <form onSubmit={this.changeUrl.bind(this)}>
-                                <input type="url" id="url" value={this.state.main.url}/>
+                                <input type="url" id="url" value={this.state.url} onChange={this.handleChangeUrl.bind(this)} />
                             </form>
                         </div>
                         <div>
