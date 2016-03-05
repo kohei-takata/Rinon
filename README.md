@@ -12,7 +12,10 @@ Electon Browser
 
 ```json
 {
-  "main" :{"url": "https://github.com/"},
+  "main" :{
+  "name": "github",
+  "url": "https://github.com/"
+  },
   "sub" : [
   {"name": "github", 
    "url": "https://github.com/"},
