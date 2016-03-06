@@ -83,15 +83,18 @@ class MainComponent extends React.Component {
                 return <WebviewComponent key={webview.name} name={webview.name} url={webview.url} isMain={this.state.main.url === webview.url} />
             });
         return (
-            <div>
-                <div id="menu">
-                    <div>Menu</div>
-                        <span>
-                            {menuList}
-                        </span>
+            <div className="wrapper">
+                <header className="main-header">
+                    <UrlBarComponent main={this.state.main} url={this.state.url} handleSubmitUrl={this.handleSubmitUrl.bind(this)} handleChangeUrl={this.handleChangeUrl.bind(this)} />
+                </header>
+                <div id="menu" className="main-sidebar">
+                    <ul className="sidebar-menu">
+                        ::before
+                        <li className="header">Menu</li>
+                        {menuList}
+                    </ul>
                 </div>
                 <div id="content">
-                    <UrlBarComponent main={this.state.main} url={this.state.url} handleSubmitUrl={this.handleSubmitUrl.bind(this)} handleChangeUrl={this.handleChangeUrl.bind(this)} />
                     <div>
                         {webviewList}
                     </div>

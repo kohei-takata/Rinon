@@ -8,6 +8,11 @@ body {
     width: 100%;
 }
 
+#component {
+    height: 100%;
+    width: 100%;
+}
+
 #menu {
     float: left;
     width: 20%;

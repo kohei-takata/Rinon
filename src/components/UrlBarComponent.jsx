@@ -33,7 +33,7 @@ export default class UrlBarComponent extends React.Component {
 
     render() {
         return (
-            <div id="urlBar">
+            <div id="urlBar" className="navbar-custom-menu">
                 <button onClick={this.back.bind(this)}>戻る</button>
                 <button onClick={this.forward.bind(this)}>進む</button>
                 <button onClick={this.reload.bind(this)}>更新</button>
