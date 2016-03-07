@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Electon Browser",
   "main": "src/main/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kohei-takata/Rinon.git"
+  },
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
