@@ -28,7 +28,7 @@ class MainComponent extends React.Component {
                     // Add all webview tag a function when 'dom-ready'.
                     this.state.sub && this.state.sub.forEach((sub) => {
                         let webview = document.getElementById(`${sub.name}-webview`);
-                        webview && webview.addEventListener("dom-ready", () => {
+                        webview && webview.addEventListener("load-commit", () => {
                             let _sub = this.state.sub;
                             _sub = _sub.map((obj) => {
                                 if(obj.name === sub.name) {
