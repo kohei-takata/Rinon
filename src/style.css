@@ -23,3 +23,14 @@ body {
 #url {
     width: 800px;
 }
+
+.custom-restricted-width {
+    /* To limit the menu width to the content of the menu: */
+    display: inline-block;
+    /* Or set the width explicitly: */
+    /* width: 10em; */
+}
+
+.pure-menu-link {
+    cursor: pointer;
+}

@@ -10,9 +10,9 @@ export default class MenuComponent extends React.Component {
     }
     render() {
         return (
-            <p key={this.props.name}>
-                <button id={`${this.props.name}-menu`} onClick={this._handleClick.bind(this)}>{this.props.name}</button>
-            </p>
+            <li className="pure-menu-item" key={this.props.name}>
+                <a href="#" className="pure-menu-link" id={`${this.props.name}-menu`} onClick={this._handleClick.bind(this)}>{this.props.name}</a>
+            </li>
         );
     };
 }

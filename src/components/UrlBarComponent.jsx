@@ -33,14 +33,14 @@ export default class UrlBarComponent extends React.Component {
 
     render() {
         return (
-            <div id="urlBar">
-                <button onClick={this.back.bind(this)}>戻る</button>
-                <button onClick={this.forward.bind(this)}>進む</button>
-                <button onClick={this.reload.bind(this)}>更新</button>
-                <button onClick={this.openDevTool.bind(this)}>DevTool</button>
-                <form onSubmit={this._handleSubmitUrl.bind(this)}>
-                    <input type="url" id="url" value={this.props.url} onChange={this._handleChangeUrl.bind(this)} />
-                </form>
+            <div className="pure-menu pure-menu-horizontal" id="urlBar">
+                <ul className="pure-menu-list">
+                    <li className="pure-menu-item"><a href="#" className="pure-menu-link" onClick={this.back.bind(this)}>戻る</a></li>
+                    <li className="pure-menu-item"><a href="#" className="pure-menu-link" onClick={this.forward.bind(this)}>進む</a></li>
+                    <li className="pure-menu-item"><a href="#" className="pure-menu-link" onClick={this.reload.bind(this)}>更新</a></li>
+                    <li className="pure-menu-item"><a href="#" className="pure-menu-link" onClick={this.openDevTool.bind(this)}>DevTool</a></li>
+                    <li className="pure-menu-item"><input type="url" id="url" value={this.props.url} onChange={this._handleChangeUrl.bind(this)} /></li>
+                </ul>
             </div>
         );
     };

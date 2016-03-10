@@ -84,11 +84,11 @@ class MainComponent extends React.Component {
             });
         return (
             <div>
-                <div id="menu">
-                    <div>Menu</div>
-                        <span>
+                <div id="menu" className="pure-menu custom-restricted-width">
+                    <span className="pure-menu-heading">Menu</span>
+                        <ul className="pure-menu-list">
                             {menuList}
-                        </span>
+                        </ul>
                 </div>
                 <div id="content">
                     <UrlBarComponent main={this.state.main} url={this.state.url} handleSubmitUrl={this.handleSubmitUrl.bind(this)} handleChangeUrl={this.handleChangeUrl.bind(this)} />
