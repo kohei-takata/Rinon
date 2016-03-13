@@ -19,6 +19,27 @@ class MainComponent extends React.Component {
     componentDidMount() {
         storage.get('menu', (error, data) => {
             if (error) throw error;
+
+            if (Object.keys(data).length === 0) {
+                const templateJson = {
+                                        "main" :{
+                                            "name": "github",
+                                            "url": "https://github.com/"
+                                        },
+                                        "sub" : [
+                                            {"name": "github",
+                                                "url": "https://github.com/"},
+                                            {"name": "google",
+                                                "url": "https://google.com/"},
+                                            {"name": "yahoo",
+                                                "url": "https://yahoo.com/"}
+                                        ]
+                                    };
+                storage.set('menu', templateJson, function (error) {
+                    if (error) throw error;
+                    location.reload();
+                });
+            }
             if (data) {
                 this.setState({
                     main: data.main,
