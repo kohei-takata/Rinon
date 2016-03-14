@@ -5,6 +5,7 @@ import storage from 'electron-json-storage';
 import MenuComponent from './MenuComponent';
 import WebviewComponent from './WebviewComponent';
 import UrlBarComponent from './UrlBarComponent';
+import template from '../template,json';
 
 class MainComponent extends React.Component {
     constructor(props) {
@@ -21,21 +22,7 @@ class MainComponent extends React.Component {
             if (error) throw error;
 
             if (Object.keys(data).length === 0) {
-                const templateJson = {
-                                        "main" :{
-                                            "name": "github",
-                                            "url": "https://github.com/"
-                                        },
-                                        "sub" : [
-                                            {"name": "github",
-                                                "url": "https://github.com/"},
-                                            {"name": "google",
-                                                "url": "https://google.com/"},
-                                            {"name": "yahoo",
-                                                "url": "https://yahoo.com/"}
-                                        ]
-                                    };
-                storage.set('menu', templateJson, function (error) {
+                storage.set('menu', template, function (error) {
                     if (error) throw error;
                     location.reload();
                 });
