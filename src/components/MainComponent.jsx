@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import storage from 'electron-json-storage';
+import shell from 'shell';
 
 import MenuComponent from './MenuComponent';
 import WebviewComponent from './WebviewComponent';
@@ -48,6 +49,9 @@ class MainComponent extends React.Component {
                                 sub: _sub,
                                 url: webview.getURL()
                             });
+                        });
+                        webview && webview.addEventListener('new-window', function(e) {
+                            shell.openExternal(e.url);
                         });
                     });
                 });
