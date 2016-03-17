@@ -8,4 +8,4 @@ Electon Browser
 4. `$ npm start`
 
 Note: `/Users/<User Name>/Library/Application Support/Rinon/menu.json` will be created by Rinon automatically.
-Update the file to your favorite site .
+Update the file to your favorite site.
