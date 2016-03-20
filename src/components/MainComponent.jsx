@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 import storage from 'electron-json-storage';
 import shell from 'shell';
 
@@ -113,4 +113,4 @@ class MainComponent extends React.Component {
     }
 }
 
-ReactDOM.render(<MainComponent />, document.getElementById("component"));
+render(<MainComponent />, document.getElementById("component"));
