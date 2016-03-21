@@ -1,0 +1,20 @@
+{
+  "main": {
+    "name": "github",
+    "url": "https://github.com/"
+  },
+  "sub": [
+    {
+      "name": "github",
+      "url": "https://github.com/"
+    },
+    {
+      "name": "google",
+      "url": "https://google.com/"
+    },
+    {
+      "name": "yahoo",
+      "url": "https://yahoo.com/"
+    }
+  ]
+}

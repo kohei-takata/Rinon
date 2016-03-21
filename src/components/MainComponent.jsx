@@ -6,7 +6,7 @@ import shell from 'shell';
 import MenuComponent from './MenuComponent';
 import WebviewComponent from './WebviewComponent';
 import UrlBarComponent from './UrlBarComponent';
-import template from '../template,json';
+import template from '../template';
 
 class MainComponent extends React.Component {
     constructor(props) {
